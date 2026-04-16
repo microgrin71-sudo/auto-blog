@@ -11,8 +11,8 @@ interface Props {
 }
 const { title, description = '', jsonLd, faqJsonLd, ogImage, author, publishedTime, keywords } = Astro.props;
 const currentPath = Astro.url.pathname;
-const siteName = 'Blog';
-const siteCopyright = 'Blog';
+const siteName = 'Тест2';
+const siteCopyright = 'Тест2';
 const canonicalUrl = Astro.url.href;
 ---
 <!doctype html>
@@ -21,6 +21,8 @@ const canonicalUrl = Astro.url.href;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="project-id" content="918dfc8b-2f8d-4547-a92e-bd54f43ba5b8" />
+  <meta name="google-site-verification" content="<meta name="google-site-verification" content="h1DoDrnCj0zbdk6UcHoQgvogBYK2Y9oRQ89LW2CZua0" />" />
   <link rel="canonical" href={canonicalUrl} />
   <meta name="description" content={description} />
   {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
@@ -88,10 +90,11 @@ const canonicalUrl = Astro.url.href;
     <div class="max-w-screen-xl mx-auto px-6 py-12">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         <span class="text-sm font-semibold text-neutral-900">{siteName}</span>
-        <p class="text-xs text-neutral-400">
-          &copy; {new Date().getFullYear()} {siteCopyright}. Создано с помощью
-          <a href="https://seo-modul.pro" target="_blank" rel="noopener" class="text-neutral-500 hover:text-neutral-900 transition-colors underline underline-offset-2">SEO-Module</a>.
-        </p>
+        <div class="flex items-center gap-3 text-xs text-neutral-400">
+          
+          <span>&copy; {new Date().getFullYear()} {siteCopyright}. Создано с помощью
+          <a href="https://seo-modul.pro" target="_blank" rel="noopener" class="text-neutral-500 hover:text-neutral-900 transition-colors underline underline-offset-2">SEO-Module</a>.</span>
+        </div>
       </div>
     </div>
   </footer>
@@ -104,6 +107,8 @@ const canonicalUrl = Astro.url.href;
         bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
       }, { passive: true });
     }
+    // Lightweight analytics pixel (no cookies, no PII)
+    (function(){try{var d={p:document.querySelector('meta[name="project-id"]')?.content||'',u:location.pathname};if(d.p){navigator.sendBeacon&&navigator.sendBeacon('https://mwcejojlbqpolplshjgj.supabase.co/functions/v1/track-hit',JSON.stringify(d))}}catch(e){}})();
   </script>
 </body>
 </html>
